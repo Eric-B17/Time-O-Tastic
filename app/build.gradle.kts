@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.time_o_tastic"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.time_o_tastic"

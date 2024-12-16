@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Clock"/>
+        <activity android:name=".TimeCalculator"/>
+        <activity android:name=".SetDate"/>
     </application>
 
 </manifest>
