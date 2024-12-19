@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class TimeCalculator extends Activity {
 
@@ -50,5 +54,21 @@ public class TimeCalculator extends Activity {
                 startActivity(intent);
             }
         });
+
+        TextView currentTime,calculatedTime;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            currentTime = findViewById(R.id.current_time);
+            calculatedTime = findViewById(R.id.calculated_time);
+
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+            String currentTime = simpleDateFormat.format(calendar.getTime());
+            currentTime.setText(currentTime)
+        }
     }
 }

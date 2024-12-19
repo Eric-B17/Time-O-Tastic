@@ -50,5 +50,9 @@ public class Clock extends Activity {
                 startActivity(intent);
             }
         });
+
+        private lateinit var binding: ActivityMainBinding
+
+        override fun onCreate()
     }
 }
