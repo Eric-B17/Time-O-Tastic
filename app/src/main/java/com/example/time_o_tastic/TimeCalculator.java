@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class TimeCalculator extends Activity {
 
@@ -19,45 +21,45 @@ public class TimeCalculator extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+        super.onCreate(saveInstanceState);
         setContentView(R.layout.timecalculator);
 
-        btn = (Button)findViewById(R.id.btnm);
-        btn = (Button)findViewById(R.id.btnc);
-        btn = (Button)findViewById(R.id.btnt);
-        btn = (Button)findViewById(R.id.btns);
+        btn = (Button) findViewById(R.id.btnm);
+        btn = (Button) findViewById(R.id.btnc);
+        btn = (Button) findViewById(R.id.btnt);
+        btn = (Button) findViewById(R.id.btns);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TimeCalculator.this,MainActivity.class);
+                Intent intent = new Intent(TimeCalculator.this, MainActivity.class);
                 startActivity(intent);
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TimeCalculator.this,Clock.class);
+                Intent intent = new Intent(TimeCalculator.this, Clock.class);
                 startActivity(intent);
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TimeCalculator.this,TimeCalculator.class);
+                Intent intent = new Intent(TimeCalculator.this, TimeCalculator.class);
                 startActivity(intent);
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TimeCalculator.this,SetDate.class);
+                Intent intent = new Intent(TimeCalculator.this, SetDate.class);
                 startActivity(intent);
             }
         });
 
-        TextView currentTime,calculatedTime;
+        TextView currentTime, calculatedTime;
 
-        @Override
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
@@ -67,8 +69,17 @@ public class TimeCalculator extends Activity {
 
             Calendar calendar = Calendar.getInstance();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
-            String currentTime = simpleDateFormat.format(calendar.getTime());
-            currentTime.setText(currentTime)
+            String currentTimee = simpleDateFormat.format(calendar.getTime());
+            currentTime.setText(currentTimee);
+            try{
+                Date date = simpleDateFormat.parse(currentTimee);
+                calendar.setTime(date);
+                calendar.add(Calendar.MINUTE, 15);
+                String result = simpleDateFormat.format(calendar.getTime());
+                calculatedTime.setText(result);
+            } catch (Exception e) {
+                currentTimee.setText(R.string.app_name);
+            }
         }
     }
 }

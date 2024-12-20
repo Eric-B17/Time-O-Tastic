@@ -1,10 +1,14 @@
 package com.example.time_o_tastic;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.annotation.Nullable;
 
@@ -50,5 +54,26 @@ public class SetDate extends Activity {
                 startActivity(intent);
             }
         });
-    }
+
+        text = findViewById(R.id.showText);
+        button = findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                openDialog();
+
+            }
+        });
+
+    public void openDialog(){
+
+            TimePickerDialog dialog = new TimePickerDialog(this, R.style.DialogTheme, TimePickerDialog.OnTimeSetListener(){
+            public void onTimeSet(TimePicker timePicker, int hours, int minutes){
+
+            text.setText(String.valueOf(hours)+":"+String.valueOf(minutes));
+            }
+        }
+        15, 00, true);
 }

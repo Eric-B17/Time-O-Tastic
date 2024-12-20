@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.TimeOTastic" parent="Base.Theme.TimeOTastic" />
+    <style name="DialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorAccent">@color/black</item>
+    </style>
 </resources>
